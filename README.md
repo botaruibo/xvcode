@@ -1,6 +1,13 @@
 # xvcode (x-validation code)
 
 
+project description:
+
+this project only for web validation code generating. we provide this tool cause there no security enough validation-code-image generator.
+this tool provide 4 kind of valid-code image generators. as follows:
+
+this project refer the [gifencoder][1]
+
 **项目作用：**
 主要用于生成web动态验证码图片。主要应用场景为web 页面上需要用户输入验证码才能进行操作的地方。
 **开发原因：**
@@ -13,7 +20,7 @@
 **感谢：**
 该项目用于生成gif图片编码器使用了 [gifencoder][1] 项目
 
-*图片示例*
+*图片示例 mapping from generator to image style* 
 
 PngVCGenerator:
 ![Png](docs/img/1.png)
@@ -29,14 +36,13 @@ GifVCGenerator3:
 
 [1]: https://github.com/cloader/gifencoder
 
-## getting started
+## Getting Started
 
-### java 项目中使用
+### For Java Developers
 
+###### Add Dependency（maven）
 
-######加入依赖包（maven）
-
-在pom.xml中加入私有仓库地址：
+add follow repository to your pom.xml
 ```
 <repository>
 	<id>snapshots</id>
@@ -49,7 +55,9 @@ GifVCGenerator3:
 	</snapshots>
 </repository>
 ```
-在pom.xml依赖中增加：
+
+add dependency to your pom.xml：
+
 ```
 <dependency>
 	<groupId>com.xinguang</groupId>
@@ -57,7 +65,7 @@ GifVCGenerator3:
 	<version>1.0-SNAPSHOT</version>
 </dependency>
 ```
-#######代码示例
+####### Code Examples
 ```
 package test
 
@@ -70,16 +78,16 @@ import com.xinguang.xvcode.generator.GifVCGenerator;
 import com.xinguang.xvcode.generator.PngVCGenerator;
 
 class Test {
-//生成验证码图片到本地磁盘
+//生成验证码图片到本地磁盘 draw image and save to disk
 public void main(String args[]) throws IOException　{
-		String path = ".";//图片存储路径
-		Integer height = 40;//image 高度。
-		Integer width = 200;//image 宽度。
-		Integer count = 5;	//
+		String path = ".";//图片存储路径 path for image save 
+		Integer height = 40;//image 高度。  image height. count as pixel
+		Integer width = 200;//image 宽度。 image width. count as pixel
+		Integer count = 5;	// validation code length.
 		String validCode = null; //验证码
 		Generator generator = new PngVCGenerator(width, height, count);
         generator.write2out(new FileOutputStream(path + "/1.png")).close();
-        validCode = generator.text();
+        validCode = generator.text(); //get the validation code as 'String'
         System.out.println(validCode);
         generator = new GifVCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/1.gif")).close();
@@ -96,15 +104,22 @@ public void main(String args[]) throws IOException　{
 }
 }
 ```
+
+the *generator.write2out()* method proved the ability to write the image binary to any OutputStream object. this especially convenience for servlet request
+
 如果要将验证码图片以流的方式穿到前端，可以直接使用*generator.write2out()*方法
 
 
-### 命令行使用
+### Use Under Command(require ${JAVA_HOME} set)
+
+use the *xvcode-1.0-SNAPSHOT-cl.jar* file to generate valid-code image directly to disk. command like:
 
 可以使用jar包直接生成本地图片。命令：
 ```
 java -jar xvcode-1.0-SNAPSHOT-cl
 ```
+usage :
+
 支持参数如下：
 ``` 
 usage:
@@ -114,6 +129,9 @@ usage:
 	-cl	validation code length, between 2 to 10, default 5
 	
 ```
+
+example:
+
 例如：
 ```
 java -jar xvcode-1.0-SNAPSHOT-cl -p test/ -h 300 -w 60 -cl 7
