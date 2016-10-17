@@ -38,8 +38,8 @@ public class APP {
 		cmd.add("-w");
 		cmd.add("-cl");
 		String path = ".";
-		Integer heigh = 40;
-		Integer weith = 200;
+		Integer height = 40;
+		Integer width = 200;
 		Integer count = 5;	
 		if (args.length > 0 && (args.length % 2) == 0) {
 			HashMap<String, String> map = new HashMap<String, String>();
@@ -85,10 +85,10 @@ public class APP {
 				path = map.get("-p");
 			}
 			if (map.get("-w") != null) {
-				weith = Integer.valueOf(map.get("-w"));
+				width = Integer.valueOf(map.get("-w"));
 			}
 			if (map.get("-h") != null) {
-				heigh = Integer.valueOf(map.get("-h"));
+				height = Integer.valueOf(map.get("-h"));
 			}
 			if (map.get("-cl") != null) {
 				count = Integer.valueOf(map.get("-cl"));
@@ -96,14 +96,14 @@ public class APP {
 		};
 		
 		
-		Generator captcha = new PngVCGenerator(weith, heigh, count);
-        captcha.write2out(new FileOutputStream(path + "/1.png")).close();
-        captcha = new GifVCGenerator(weith, heigh, count);//   gif
-        captcha.write2out(new FileOutputStream(path + "/1.gif")).close();
-        captcha = new Gif2VCGenerator(weith, heigh, count);//   gif
-        captcha.write2out(new FileOutputStream(path + "/2.gif")).close();
-        captcha = new Gif3VCGenerator(weith, heigh, count);//   gif
-        captcha.write2out(new FileOutputStream(path + "/3.gif")).close();
+		Generator generator = new PngVCGenerator(width, height, count);
+        generator.write2out(new FileOutputStream(path + "/1.png")).close();
+        generator = new GifVCGenerator(width, height, count);//   gif
+        generator.write2out(new FileOutputStream(path + "/1.gif")).close();
+        generator = new Gif2VCGenerator(width, height, count);//   gif
+        generator.write2out(new FileOutputStream(path + "/2.gif")).close();
+        generator = new Gif3VCGenerator(width, height, count);//   gif
+        generator.write2out(new FileOutputStream(path + "/3.gif")).close();
 	}
 
 }

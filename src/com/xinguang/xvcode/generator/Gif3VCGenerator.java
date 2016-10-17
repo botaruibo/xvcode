@@ -41,6 +41,25 @@ public class Gif3VCGenerator extends Generator {
 		this.font = font;
 	}
 
+	/**this constructor is different from others.
+	 *  parameters with prefix 'p' are static field.
+	 *  be care for the side effect to other beans
+	 * @param width image width
+	 * @param height image height
+	 * @param len validation code length
+	 * @param font font features
+	 * @param pbkAlpha  alpha channel for image background. default 7f
+	 * @param pOvalSize the interference oval strike size. default 4
+	 * @param pOvalCount the interference oval count. default 10
+	 */
+	public Gif3VCGenerator(int width, int height, int len, Font font,
+			float pbkAlpha, float pOvalSize, int pOvalCount) {
+		this(width, height, len, font);
+		bkAlpha = pbkAlpha;
+		ovalSize = pOvalSize;
+		ovalCount = pOvalCount;
+	}
+	
 	@Override
 	public OutputStream write2out(OutputStream out) {
 		if (out == null) {

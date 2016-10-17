@@ -1,5 +1,6 @@
 *.log
 *.jar
+!xvcode-1.0-SNAPSHOT-cl.jar
 */target
 
 */classes
@@ -39,5 +40,3 @@ target
 *.DS_Store
 
 *.iml
-*.gif
-*.png

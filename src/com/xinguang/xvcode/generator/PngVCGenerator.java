@@ -49,25 +49,25 @@ public class PngVCGenerator extends Generator {
 		this.font = font;
 	}
 
-	/** this constructor id different from others.
+	/** this constructor is different from others.
 	 *  parameters with prefix 'p' are static field.
 	 *  be care for the side effect to other beans
-	 * @param width
-	 * @param height
-	 * @param len
-	 * @param font
-	 * @param pbkAlpha
-	 * @param pfontAlpha
-	 * @param povalSize
-	 * @param povalCount
+	 * @param width image width
+	 * @param height image height
+	 * @param len validation code length
+	 * @param font  font features
+	 * @param pbkAlpha  alpha channel for image background. default 7f
+	 * @param pFontAlpha alpha channel for validation code font. default 7f
+	 * @param pOvalSize the interference oval strike size. default 4
+	 * @param pOvalCount the interference oval count. default 20
 	 */
 	public PngVCGenerator(int width, int height, int len, Font font,
-			float pbkAlpha, float pfontAlpha, float povalSize, int povalCount) {
+			float pbkAlpha, float pFontAlpha, float pOvalSize, int pOvalCount) {
 		this(width, height, len, font);
 		bkAlpha = pbkAlpha;
-		fontAlpha = pfontAlpha;
-		ovalSize = povalSize;
-		ovalCount = povalCount;
+		fontAlpha = pFontAlpha;
+		ovalSize = pOvalSize;
+		ovalCount = pOvalCount;
 	}
 	
 	@Override

@@ -35,6 +35,20 @@ public class GifVCGenerator extends Generator {
 		this.font = font;
 	}
 
+	/**this constructor is different from others.
+	 *  parameters with prefix 'p' are static field.
+	 *  be care for the side effect to other beans
+	 * @param width image width
+	 * @param height image height
+	 * @param len validation code length
+	 * @param font font features
+	 * @param pOvalSize the interference oval strike size. default 4
+	 */
+	public GifVCGenerator(int width, int height, int len, Font font, int pOvalSize) {
+		this(width, height, len, font);
+		ovalSize = pOvalSize;
+	}
+	
 	@Override
 	public OutputStream write2out(OutputStream out) {
 		if (out == null) {
