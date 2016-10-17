@@ -9,7 +9,7 @@
 **/classes/
 **/lib/
 
-
+*.md.html
 *.prefs
 
 
