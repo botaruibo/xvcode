@@ -76,14 +76,23 @@ public void main(String args[]) throws IOException　{
 		Integer height = 40;//image 高度。
 		Integer width = 200;//image 宽度。
 		Integer count = 5;	//
+		String validCode = null; //验证码
 		Generator generator = new PngVCGenerator(width, height, count);
         generator.write2out(new FileOutputStream(path + "/1.png")).close();
+        validCode = generator.text();
+        System.out.println(validCode);
         generator = new GifVCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/1.gif")).close();
+        validCode = generator.text();
+        System.out.println(validCode);
         generator = new Gif2VCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/2.gif")).close();
+        validCode = generator.text();
+        System.out.println(validCode);
         generator = new Gif3VCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/3.gif")).close();
+        validCode = generator.text();
+        System.out.println(validCode);
 }
 }
 ```
