@@ -109,9 +109,9 @@ java -jar xvcode-1.0-SNAPSHOT-cl
 ``` 
 usage:
 	-p	dir path for the image, default generate in current dir
-	-h	image height, default 200
-	-w	image width, default 40
-	-cl	validation code length, default 5
+	-h	image height, between 50 to 500, default 200
+	-w	image width, between 30 to 300, default 40
+	-cl	validation code length, between 2 to 10, default 5
 	
 ```
 例如：

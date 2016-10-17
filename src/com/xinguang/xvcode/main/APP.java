@@ -60,7 +60,7 @@ public class APP {
 			if (map.get("-w") != null) {
 				Pattern p = Pattern.compile("^[0-9]*$");
 				m = p.matcher(map.get("-w").toString());
-				if (!m.matches() || Integer.valueOf(map.get("-w").toString()) < 10 || Integer.valueOf(map.get("-w").toString()) > 500) {
+				if (!m.matches() || Integer.valueOf(map.get("-w").toString()) < 50 || Integer.valueOf(map.get("-w").toString()) > 500) {
 					System.err.println("-w must be number, and big than 10 and litter than 500");
 					return;
 				};
@@ -68,7 +68,7 @@ public class APP {
 			if (map.get("-h") != null) {
 				Pattern p = Pattern.compile("^[0-9]*$");
 				m = p.matcher(map.get("-h").toString());
-				if (!m.matches() || Integer.valueOf(map.get("-h").toString()) < 10 || Integer.valueOf(map.get("-h").toString()) > 500) {
+				if (!m.matches() || Integer.valueOf(map.get("-h").toString()) < 30 || Integer.valueOf(map.get("-h").toString()) > 300) {
 					System.err.println("-h must be number, and big than 10 and litter than 500");
 					return;
 				};
@@ -98,12 +98,16 @@ public class APP {
 		
 		Generator generator = new PngVCGenerator(width, height, count);
         generator.write2out(new FileOutputStream(path + "/1.png")).close();
+        System.out.println(generator.text());
         generator = new GifVCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/1.gif")).close();
+        System.out.println(generator.text());
         generator = new Gif2VCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/2.gif")).close();
+        System.out.println(generator.text());
         generator = new Gif3VCGenerator(width, height, count);//   gif
         generator.write2out(new FileOutputStream(path + "/3.gif")).close();
+        System.out.println(generator.text());
 	}
 
 }
