@@ -17,6 +17,9 @@ public class GifVCGenerator extends Generator {
 	/** oval stroke size**/
 	private static float ovalSize = 4.0f;
 	
+	/** git delay. unit ms**/
+	private static int gifDelayTime = 500;
+	
 	public GifVCGenerator() {
 	}
 
@@ -43,10 +46,12 @@ public class GifVCGenerator extends Generator {
 	 * @param len validation code length
 	 * @param font font features
 	 * @param pOvalSize the interference oval strike size. default 4
+	 * @param pGifDelayTime gif frame delay time.default 500ms 
 	 */
-	public GifVCGenerator(int width, int height, int len, Font font, int pOvalSize) {
+	public GifVCGenerator(int width, int height, int len, Font font, int pOvalSize, int pGifDelayTime) {
 		this(width, height, len, font);
 		ovalSize = pOvalSize;
+		gifDelayTime = pGifDelayTime;	
 	}
 	
 	@Override
@@ -57,7 +62,7 @@ public class GifVCGenerator extends Generator {
 		AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
 		gifEncoder.start(out);
 		gifEncoder.setQuality(180);
-		gifEncoder.setDelay(100);
+		gifEncoder.setDelay(gifDelayTime);
 		gifEncoder.setRepeat(0);
 		BufferedImage frame;
 		char[] rands = alphas();

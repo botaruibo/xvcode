@@ -95,10 +95,10 @@ public abstract class Generator {
 	 */
 	public abstract BufferedImage getValidCodeImage();
 
-	/** get random validation code string
+	/** get random validation code string as lower case
 	 * @return validation code
 	 */
 	public String text() {
-		return chars;
+		return chars.toLowerCase();
 	}
 }

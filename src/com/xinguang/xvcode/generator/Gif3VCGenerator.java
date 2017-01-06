@@ -23,6 +23,9 @@ public class Gif3VCGenerator extends Generator {
 	/** oval count. decide to draw how many ovals as background**/
 	private static int ovalCount = 10;
 
+	/** git delay. unit ms**/
+	private static int gifDelayTime = 500;
+	
 	public Gif3VCGenerator() {
 	}
 
@@ -51,13 +54,15 @@ public class Gif3VCGenerator extends Generator {
 	 * @param pbkAlpha  alpha channel for image background. default 7f
 	 * @param pOvalSize the interference oval strike size. default 4
 	 * @param pOvalCount the interference oval count. default 10
+	 * @param pGifDelayTime gif frame delay time.default 500ms 
 	 */
 	public Gif3VCGenerator(int width, int height, int len, Font font,
-			float pbkAlpha, float pOvalSize, int pOvalCount) {
+			float pbkAlpha, float pOvalSize, int pOvalCount, int pGifDelayTime) {
 		this(width, height, len, font);
 		bkAlpha = pbkAlpha;
 		ovalSize = pOvalSize;
 		ovalCount = pOvalCount;
+		gifDelayTime = pGifDelayTime;	
 	}
 	
 	@Override
@@ -68,7 +73,7 @@ public class Gif3VCGenerator extends Generator {
 		AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
 		gifEncoder.start(out);
 		gifEncoder.setQuality(180);
-		gifEncoder.setDelay(100);
+		gifEncoder.setDelay(gifDelayTime);
 		gifEncoder.setRepeat(0);
 		BufferedImage frame;
 		char[] rands = alphas();
