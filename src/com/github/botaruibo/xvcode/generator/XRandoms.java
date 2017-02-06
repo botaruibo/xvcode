@@ -1,4 +1,4 @@
-package com.xinguang.xvcode.generator;
+package com.github.botaruibo.xvcode.generator;
 
 import java.util.Random;
 

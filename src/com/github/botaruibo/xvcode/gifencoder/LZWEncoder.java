@@ -1,4 +1,4 @@
-package com.xinguang.xvcode.gifencoder;
+package com.github.botaruibo.xvcode.gifencoder;
 
 import java.io.OutputStream;
 import java.io.IOException;

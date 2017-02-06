@@ -1,6 +1,9 @@
-package com.xinguang.xvcode.generator;
+package com.github.botaruibo.xvcode.generator;
 
 import java.awt.AlphaComposite;
+
+import static com.github.botaruibo.xvcode.generator.XRandoms.num;
+
 import java.awt.*;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -9,8 +12,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
-
-import static com.xinguang.xvcode.generator.XRandoms.num;
 
 /**
  *  PNG validation code image generator

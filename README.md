@@ -60,7 +60,7 @@ add dependency to your pom.xml：
 
 ```
 <dependency>
-	<groupId>com.xinguang</groupId>
+	<groupId>com.github.botaruibo</groupId>
 	<artifactId>xvcode</artifactId>
 	<version>1.0-SNAPSHOT</version>
 </dependency>
@@ -71,11 +71,11 @@ package test
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import com.xinguang.xvcode.generator.Generator;
-import com.xinguang.xvcode.generator.Gif2VCGenerator;
-import com.xinguang.xvcode.generator.Gif3VCGenerator;
-import com.xinguang.xvcode.generator.GifVCGenerator;
-import com.xinguang.xvcode.generator.PngVCGenerator;
+import com.github.botaruibo.xvcode.generator.Generator;
+import com.github.botaruibo.xvcode.generator.Gif2VCGenerator;
+import com.github.botaruibo.xvcode.generator.Gif3VCGenerator;
+import com.github.botaruibo.xvcode.generator.GifVCGenerator;
+import com.github.botaruibo.xvcode.generator.PngVCGenerator;
 
 class Test {
 //生成验证码图片到本地磁盘 draw image and save to disk

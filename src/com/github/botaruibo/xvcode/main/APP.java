@@ -1,4 +1,4 @@
-package com.xinguang.xvcode.main;
+package com.github.botaruibo.xvcode.main;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.xinguang.xvcode.generator.Generator;
-import com.xinguang.xvcode.generator.Gif2VCGenerator;
-import com.xinguang.xvcode.generator.Gif3VCGenerator;
-import com.xinguang.xvcode.generator.GifVCGenerator;
-import com.xinguang.xvcode.generator.PngVCGenerator;
+import com.github.botaruibo.xvcode.generator.Generator;
+import com.github.botaruibo.xvcode.generator.Gif2VCGenerator;
+import com.github.botaruibo.xvcode.generator.Gif3VCGenerator;
+import com.github.botaruibo.xvcode.generator.GifVCGenerator;
+import com.github.botaruibo.xvcode.generator.PngVCGenerator;
 
 /**just a common dynamic validation code image generator
  * provide 1 png image generator and 3 gif image generators

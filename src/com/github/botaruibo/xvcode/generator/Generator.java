@@ -1,7 +1,7 @@
-package com.xinguang.xvcode.generator;
+package com.github.botaruibo.xvcode.generator;
 
-import static com.xinguang.xvcode.generator.XRandoms.alpha;
-import static com.xinguang.xvcode.generator.XRandoms.num;
+import static com.github.botaruibo.xvcode.generator.XRandoms.alpha;
+import static com.github.botaruibo.xvcode.generator.XRandoms.num;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -88,7 +88,7 @@ public abstract class Generator {
 	public abstract OutputStream write2out(OutputStream os);
 
 	/**no result provide for gif validation code. only for PNG validation code image.
-	 *  only @see com.xinguang.xvcode.generator.Captcha#write2out(OutputStream os) avaliable for GIF
+	 *  only @see com.github.botaruibo.xvcode.generator.Captcha#write2out(OutputStream os) avaliable for GIF
 	 * @return
 	 * 			1.BufferedImage for PNG
 	 * 			2.<code>null</code> for GIF

@@ -1,6 +1,6 @@
-package com.xinguang.xvcode.generator;
+package com.github.botaruibo.xvcode.generator;
 
-import static com.xinguang.xvcode.generator.XRandoms.num;
+import static com.github.botaruibo.xvcode.generator.XRandoms.*;
 
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
@@ -10,36 +10,30 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
 
-import com.xinguang.xvcode.gifencoder.AnimatedGifEncoder;
+import com.github.botaruibo.xvcode.gifencoder.AnimatedGifEncoder;
 
-public class Gif3VCGenerator extends Generator {
+public class GifVCGenerator extends Generator {
 
-	/** background graphic alpha value **/
-	private static float bkAlpha = 0.7f; 
-	
 	/** oval stroke size**/
 	private static float ovalSize = 4.0f;
 	
-	/** oval count. decide to draw how many ovals as background**/
-	private static int ovalCount = 10;
-
 	/** git delay. unit ms**/
 	private static int gifDelayTime = 500;
 	
-	public Gif3VCGenerator() {
+	public GifVCGenerator() {
 	}
 
-	public Gif3VCGenerator(int width, int height) {
+	public GifVCGenerator(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
 
-	public Gif3VCGenerator(int width, int height, int len) {
+	public GifVCGenerator(int width, int height, int len) {
 		this(width, height);
 		this.len = len;
 	}
 
-	public Gif3VCGenerator(int width, int height, int len, Font font) {
+	public GifVCGenerator(int width, int height, int len, Font font) {
 		this(width, height, len);
 		this.font = font;
 	}
@@ -51,17 +45,12 @@ public class Gif3VCGenerator extends Generator {
 	 * @param height image height
 	 * @param len validation code length
 	 * @param font font features
-	 * @param pbkAlpha  alpha channel for image background. default 7f
 	 * @param pOvalSize the interference oval strike size. default 4
-	 * @param pOvalCount the interference oval count. default 10
 	 * @param pGifDelayTime gif frame delay time.default 500ms 
 	 */
-	public Gif3VCGenerator(int width, int height, int len, Font font,
-			float pbkAlpha, float pOvalSize, int pOvalCount, int pGifDelayTime) {
+	public GifVCGenerator(int width, int height, int len, Font font, int pOvalSize, int pGifDelayTime) {
 		this(width, height, len, font);
-		bkAlpha = pbkAlpha;
 		ovalSize = pOvalSize;
-		ovalCount = pOvalCount;
 		gifDelayTime = pGifDelayTime;	
 	}
 	
@@ -81,17 +70,8 @@ public class Gif3VCGenerator extends Generator {
 		for (int i = 0; i < len; i++) {
 			fontcolor[i] = new Color(20 + num(110), 20 + num(110), 20 + num(110));
 		}
-		int[] ovalPosition = new int[ovalCount * 4];
-		Color[] colors = new Color[ovalCount];		
-		for (int i = 0; i < ovalPosition.length; i += 4) {
-			ovalPosition[i] = num(width);
-			ovalPosition[i+1] = num(height);
-			ovalPosition[i+2] = 10 + num(10);
-			ovalPosition[i+3] = 10 + num(10);
-			colors[i >> 2] = color(150, 250);
-		}
 		for (int i = 0; i < len; i++) {
-			frame = getValidCodeImage(fontcolor, rands, ovalPosition, colors, i);
+			frame = getValidCodeImage(fontcolor, rands, i);
 			gifEncoder.addFrame(frame);
 			frame.flush();
 		}
@@ -105,34 +85,27 @@ public class Gif3VCGenerator extends Generator {
 	 * @param flag
 	 * @return
 	 */
-	private BufferedImage getValidCodeImage(Color[] fontcolor, char[] strs, int[] ovalPosition, Color[] colors, int flag) {
+	private BufferedImage getValidCodeImage(Color[] fontcolor, char[] strs, int flag) {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = (Graphics2D) image.getGraphics();
-		// set background color to white
+		//set background color to white
 		g2d.setColor(Color.WHITE);
 		g2d.fillRect(0, 0, width, height);
 		g2d.setStroke(new BasicStroke(ovalSize));
 		AlphaComposite ac3;
-		ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, bkAlpha);// specify the background graphic's alpha channel
-		g2d.setComposite(ac3);
-
-		// draw random ovals
-		for (int i = 0; i < ovalPosition.length; i += 4) {
-			g2d.setColor(colors[i >> 2]);		
-			g2d.drawOval(ovalPosition[i], ovalPosition[i+1], ovalPosition[i+2], ovalPosition[i+3]);
-		}
 		int h = height - ((height - font.getSize()) >> 1);
 		int w = width / len;
 		g2d.setFont(font);
 		for (int i = 0; i < len; i++) {
+			ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, getAlpha(flag, i) / 2);
+			g2d.setComposite(ac3);
+			g2d.setColor(fontcolor[i]);			
+			// one frame with tow ovals
+			g2d.drawOval(num(width), num(height), 10 + num(10), 10 + num(10));
+			g2d.drawOval(num(width), num(height), 10 + num(10), 10 + num(10));
 			ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, getAlpha(flag, i));
 			g2d.setComposite(ac3);
-			g2d.setColor(fontcolor[i]);						
-			int degree = num(90); // random rotate degree. -90 < degree < 90
-			degree = num(2) == 0 ? -degree : degree;
-			g2d.rotate(Math.toRadians(degree), (width - (len - i) * w) + (w >> 1), (height >> 1) + 2);
 			g2d.drawString(strs[i] + "", (width - (len - i) * w) + (w - font.getSize()) + 1, h - 4);
-			g2d.rotate(-Math.toRadians(degree), (width - (len - i) * w) + (w >> 1), (height >> 1) + 2);
 		}
 		g2d.dispose();
 		return image;
@@ -145,16 +118,15 @@ public class Gif3VCGenerator extends Generator {
 	 */
 	private float getAlpha(int i, int j) {
 		int num = i + j;
-		float r = (float) 1 / len, s = (len + 1) * r;
+		float r =  1f / len, s = (len + 1) * r;
 		return num > len ? (num * r - s) : num * r;
 	}
 
 	/* return null for all invoke. 
-	 * @see com.xinguang.xvcode.generator.Captcha#getValidCodeImage(char[])
+	 * @see com.github.botaruibo.xvcode.generator.Captcha#getValidCodeImage(char[])
 	 */
 	@Override
 	public BufferedImage getValidCodeImage() {
 		return null;
 	}
-
 }

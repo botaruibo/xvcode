@@ -1,4 +1,4 @@
-package com.xinguang.xvcode.gifencoder;
+package com.github.botaruibo.xvcode.gifencoder;
 
 /* NeuQuant Neural-Net Quantization Algorithm
  * ------------------------------------------
