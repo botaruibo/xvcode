@@ -44,17 +44,4 @@
   </plugin>
     </plugins>
   </build>
-  <distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>user release resp</name>
-			<url>http://120.26.91.179:8081/nexus/content/repositories/releases/</url>
-		</repository>
-
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>user snapshot</name>
-			<url>http://120.26.91.179:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
