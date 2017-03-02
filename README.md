@@ -48,7 +48,7 @@ add dependency to your pom.xml：
 <dependency>
 	<groupId>com.github.botaruibo</groupId>
 	<artifactId>xvcode</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 </dependency>
 ```
 ####### Code Examples
