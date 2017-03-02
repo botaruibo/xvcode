@@ -42,20 +42,6 @@ GifVCGenerator3:
 
 ###### Add Dependency（maven）
 
-add follow repository to your pom.xml
-```
-<repository>
-	<id>snapshots</id>
-	<url>http://120.26.91.179:8081/nexus/content/repositories/snapshots/</url>
-	<releases>
-		<enabled>false</enabled>
-	</releases>
-	<snapshots>
-		<enabled>true</enabled>
-	</snapshots>
-</repository>
-```
-
 add dependency to your pom.xml：
 
 ```
