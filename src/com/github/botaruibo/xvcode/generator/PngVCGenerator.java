@@ -117,7 +117,7 @@ public class PngVCGenerator extends Generator {
 		int w = width / len, size = w - font.getSize() + 2;
 		/* draw font */
 		for (int i = 0; i < len; i++) {
-			color = new Color(20 + num(110), 20 + num(110), 20 + num(110));// 对每个字符都用随机颜色
+			color = new Color(20 + num(110), 20 + num(110), 20 + num(110));// random color for each font
 			g2d.setColor(color);
 			int degree = num(90); // random rotate degree. -90 < degree < 90
 			degree = num(2) == 0 ? -degree : degree;

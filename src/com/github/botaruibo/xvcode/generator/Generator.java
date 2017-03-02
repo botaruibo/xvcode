@@ -15,7 +15,7 @@ import java.io.OutputStream;
  */
 public abstract class Generator {
 
-	protected Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28); // 字体
+	protected Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28); // Font
 	protected int len = 5; // validation code length
 	protected int width = 150; // image width
 	protected int height = 40; // image height
@@ -66,9 +66,9 @@ public abstract class Generator {
 	}
 
 	/**
-	 * 给定范围获得随机颜色
+	 * pick color from a random range
 	 * 
-	 * @return Color 随机颜色
+	 * @return Color random color
 	 */
 	protected Color color(int fc, int bc) {
 		if (fc > 255)
