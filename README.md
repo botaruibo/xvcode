@@ -20,7 +20,7 @@ this project refer the [gifencoder][1]
 **感谢：**
 该项目用于生成gif图片编码器使用了 [gifencoder][1] 项目
 
-*图片示例 mapping from generator to image style* 
+*图片示例 mapping from generator to image style*  
 
 PngVCGenerator:
 ![image](https://github.com/botaruibo/xvcode/blob/master/docs/imgs/1.png)
@@ -36,6 +36,7 @@ GifVCGenerator3:
 
 [1]: https://github.com/cloader/gifencoder
 
+*国内如果不能查看github中readme的图片，可参考https://blog.51cto.com/14234228/2492600 更新自己本地的github dns*
 ## Getting Started
 
 ### For Java Developers
