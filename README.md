@@ -23,16 +23,16 @@ this project refer the [gifencoder][1]
 *图片示例 mapping from generator to image style* 
 
 PngVCGenerator:
-![Png](docs/imgs/1.png)
+![image](https://github.com/botaruibo/xvcode/blob/master/docs/imgs/1.png)
 
 GifVCGenerator:
-![Gif1](docs/imgs/1.gif)
+![image](https://github.com/botaruibo/xvcode/blob/master/docs/imgs/1.gif)
 
 GifVCGenerator2:
-![Gif1](docs/imgs/2.gif)
+![image](https://github.com/botaruibo/xvcode/blob/master/docs/imgs/2.gif)
 
 GifVCGenerator3:
-![Gif1](docs/imgs/3.gif)
+![image](https://github.com/botaruibo/xvcode/blob/master/docs/imgs/3.gif)
 
 [1]: https://github.com/cloader/gifencoder
 
