@@ -15,7 +15,7 @@ import com.github.botaruibo.xvcode.generator.GifVCGenerator;
 import com.github.botaruibo.xvcode.generator.PngVCGenerator;
 
 /**just a common dynamic validation code image generator
- * provide 1 png image generator and 3 gif image generators
+ * provide 1 png generator and 3 gif generators
  * @author brui
  *
  */

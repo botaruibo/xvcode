@@ -14,7 +14,7 @@ import java.io.OutputStream;
 import javax.imageio.ImageIO;
 
 /**
- *  PNG validation code image generator
+ *  PNG validation code generator
  * @author brui
  *
  */

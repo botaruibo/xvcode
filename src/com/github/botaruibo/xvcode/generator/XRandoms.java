@@ -9,8 +9,8 @@ public class XRandoms {
 			'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'p',
 			'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-	/**generator random number between <code>min</code> and  <code>max </code>.
-	 * including <code>min</code> but not <code>max </code> 
+	/**generator random number between <code>min</code> and  <code>max</code>.
+	 * including <code>min</code> but not <code>max</code>
 	 * @param min 
 	 * @param max
 	 * @return random number
@@ -19,7 +19,7 @@ public class XRandoms {
 		return min + RANDOM.nextInt(max - min);
 	}
 
-	/**generator random number between <code>0</code> and  <code>num </code>.
+	/**generator random number between <code>0</code> and  <code>num</code>.
 	 * including <code>0</code> but not <code>num</code> 
 	 * @param num
 	 * @return
